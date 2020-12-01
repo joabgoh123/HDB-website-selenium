@@ -2,8 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import csv
 
-driver = webdriver.Chrome(executable_path='C:/Users/Joab-PC/Desktop/Personal Documents/Selenium Projects/chromedriver_win32/chromedriver.exe')
-driver.get('https://services2.hdb.gov.sg/webapp/BP13AWFlatAvail/BP13EBSFlatSearch?Town=Tampines&Flat_Type=SBF&selectedTown=Tampines&Flat=4-Room&ethnic=C&ViewOption=A&Block=0&DesType=A&EthnicA=&EthnicM=&EthnicC=C&EthnicO=&numSPR=&dteBallot=201905&Neighbourhood=&Contract=&projName=&BonusFlats1=N&searchDetails=Y&brochure=false')
+driver = webdriver.Chrome(executable_path='CHROMEDRIVER_EXECUTABLE')
+driver.get('HDB_LINK')
 blocks_uncleaned_elements = driver.find_elements_by_xpath('//*[@id="blockDetails"]//font')
 blocks_cleaned = []
 data = []
@@ -39,7 +39,7 @@ for block in blocks_cleaned:
             "Price":price}
             data.append(temp_dict)
 
-with open("C:/Users/Joab-PC/Desktop/Personal Documents/Selenium Projects/Tampines_SOB.csv",'w',newline='') as csvFile:
+with open("PATH_TO_YOUR_FILE",'w',newline='') as csvFile:
     fields = temp_dict.keys()
     writer = csv.DictWriter(csvFile,fields)
     writer.writeheader()
